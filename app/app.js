@@ -6,6 +6,7 @@ import {
   globalErrHandler,
 } from "../middlewares/globalErrHandler.js";
 import authRouter from "../routes/authRouter.js";
+import userRouter from "../routes/userRouter.js";
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/users", userRouter);
 
 // Error Handler
 app.use(notFoundErr);
