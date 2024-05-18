@@ -1,6 +1,7 @@
 import AsyncHandler from "express-async-handler";
 import { hashPassword, isPasswordMatched } from "../utils/helpers.js";
 import User from "../model/User.js";
+import Accommodation from "../model/Accommodation.js";
 
 // @route POST /users/get-all-users
 
@@ -66,3 +67,31 @@ export const deleteUser = AsyncHandler(async (req, res) => {
     message: "User deleted",
   });
 });
+
+// @route POST /users/create-accommodation-announcement
+export const createAccommodationAnnouncement = AsyncHandler(
+  async (req, res) => {
+    console.log(req.user);
+    const user = await User.findById(req.userAuth._id);
+    if (!user) {
+      res.status(404);
+      throw new Error("User not found");
+    }
+    const { definition, city, township, district, street } = req.body;
+    const accommodation = new Accommodation({
+      by: user._id,
+      definition,
+      city,
+      township,
+      district,
+      street,
+    });
+
+    await accommodation.save();
+    res.status(201).json({
+      success: true,
+      message: "Accommodation announcement created",
+      data: accommodation,
+    });
+  }
+);

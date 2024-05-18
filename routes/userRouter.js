@@ -4,6 +4,7 @@ import {
   getUserById,
   deleteUser,
   updateUserProfile,
+  createAccommodationAnnouncement,
 } from "../controller/userController.js";
 
 import isAuthenticated from "../middlewares/isAuthenticated.js";
@@ -24,6 +25,12 @@ userRouter.delete(
   isAuthenticated(User),
   roleRestriction("user"),
   deleteUser
+);
+
+userRouter.post(
+  "/create-accommodation-announcement",
+  isAuthenticated(User),
+  createAccommodationAnnouncement
 );
 
 export default userRouter;

@@ -10,13 +10,22 @@ const accommodationSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide a definition"],
   },
-  images: {
-    type: [String],
-    required: [true, "Please provide images"],
-  },
-  location: {
+  city: {
     type: String,
-    required: [true, "Please provide a location"],
+    required: [true, "Please provide a city"],
+  },
+  township: {
+    type: String,
+    required: [true, "Please provide a township"],
+  },
+  district: {
+    type: String,
+    required: [true, "Please provide a district"],
+  },
+
+  street: {
+    type: String,
+    required: [true, "Please provide a street"],
   },
 });
 
