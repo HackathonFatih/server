@@ -10,6 +10,14 @@ const accommodationSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide a definition"],
   },
+  personNumber: {
+    type: Number,
+    required: [true, "Please provide a person number"],
+  },
+  duration: {
+    type: String,
+    required: [true, "Please provide a duration"],
+  },
   city: {
     type: String,
     required: [true, "Please provide a city"],

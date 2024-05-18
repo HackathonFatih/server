@@ -5,6 +5,7 @@ import {
   deleteUser,
   updateUserProfile,
   createAccommodationAnnouncement,
+  createInstructorOrPsychologistAnnouncement,
 } from "../controller/userController.js";
 
 import isAuthenticated from "../middlewares/isAuthenticated.js";
@@ -32,5 +33,9 @@ userRouter.post(
   isAuthenticated(User),
   createAccommodationAnnouncement
 );
-
+userRouter.post(
+  "/create-instructor-or-psychologist-announcement",
+  isAuthenticated(User),
+  createInstructorOrPsychologistAnnouncement
+);
 export default userRouter;

@@ -2,6 +2,7 @@ import AsyncHandler from "express-async-handler";
 import { hashPassword, isPasswordMatched } from "../utils/helpers.js";
 import User from "../model/User.js";
 import Accommodation from "../model/Accommodation.js";
+import InstructorOrPsychologist from "../model/InstructorOrPsychologist.js";
 
 // @route POST /users/get-all-users
 
@@ -77,10 +78,20 @@ export const createAccommodationAnnouncement = AsyncHandler(
       res.status(404);
       throw new Error("User not found");
     }
-    const { definition, city, township, district, street } = req.body;
+    const {
+      definition,
+      personNumber,
+      duration,
+      city,
+      township,
+      district,
+      street,
+    } = req.body;
     const accommodation = new Accommodation({
       by: user._id,
       definition,
+      personNumber,
+      duration,
       city,
       township,
       district,
@@ -92,6 +103,32 @@ export const createAccommodationAnnouncement = AsyncHandler(
       success: true,
       message: "Accommodation announcement created",
       data: accommodation,
+    });
+  }
+);
+
+// @route POST /users/create-instructor-or-psychologist-announcement
+export const createInstructorOrPsychologistAnnouncement = AsyncHandler(
+  async (req, res) => {
+    console.log(req.user);
+    const user = await User.findById(req.userAuth._id);
+    if (!user) {
+      res.status(404);
+      throw new Error("User not found");
+    }
+    const { definition, type, phoneNumber } = req.body;
+    const announcement = new InstructorOrPsychologist({
+      by: user._id,
+      definition,
+      type,
+      phoneNumber,
+    });
+
+    await announcement.save();
+    res.status(201).json({
+      success: true,
+      message: `${type} announcement created`,
+      data: announcement,
     });
   }
 );

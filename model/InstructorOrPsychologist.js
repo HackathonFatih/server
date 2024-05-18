@@ -15,9 +15,9 @@ const instructorOrPsychologistSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide a definition"],
   },
-  images: {
-    type: [String],
-    required: [true, "Please provide images"],
+  phoneNumber: {
+    type: String,
+    required: [true, "Please provide a phone number"],
   },
 });
 
