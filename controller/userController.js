@@ -3,6 +3,7 @@ import { hashPassword, isPasswordMatched } from "../utils/helpers.js";
 import User from "../model/User.js";
 import Accommodation from "../model/Accommodation.js";
 import InstructorOrPsychologist from "../model/InstructorOrPsychologist.js";
+import Cargo from "../model/Cargo.js";
 
 // @route POST /users/get-all-users
 
@@ -146,3 +147,21 @@ export const getAllInstructorOrPsychologistAnnouncement = AsyncHandler(
     });
   }
 );
+
+// @route GET /users/where-is-my-cargo
+export const whereIsMyCargo = AsyncHandler(async (req, res) => {
+  const { followNumber } = req.body;
+
+  const cargo = await Cargo.find({ followNumber });
+
+  if (!cargo) {
+    res.status(404);
+    throw new Error("Cargo not found");
+  }
+
+  res.status(200).json({
+    success: true,
+    message: "Cargo found",
+    data: cargo,
+  });
+});

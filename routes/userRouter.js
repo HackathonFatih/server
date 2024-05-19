@@ -8,6 +8,7 @@ import {
   createInstructorOrPsychologistAnnouncement,
   getAllAccommodationAnnouncement,
   getAllInstructorOrPsychologistAnnouncement,
+  whereIsMyCargo,
 } from "../controller/userController.js";
 
 import isAuthenticated from "../middlewares/isAuthenticated.js";
@@ -48,4 +49,6 @@ userRouter.get(
   "/get-all-instructor-or-psychologist-announcement",
   getAllInstructorOrPsychologistAnnouncement
 );
+userRouter.get("/where-is-my-cargo", whereIsMyCargo);
+
 export default userRouter;
