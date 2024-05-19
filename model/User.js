@@ -24,6 +24,11 @@ const userSchema = new mongoose.Schema(
       enum: ["user", "responsible"],
       default: "user",
     },
+    placeOfResponsibility: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "DistributingPoint",
+    },
+
     isEarthquakeSurvivor: {
       type: Boolean,
       default: false,

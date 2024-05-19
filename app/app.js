@@ -7,6 +7,7 @@ import {
 } from "../middlewares/globalErrHandler.js";
 import authRouter from "../routes/authRouter.js";
 import userRouter from "../routes/userRouter.js";
+import distrubutingPointRouter from "../routes/distrubutingPointRouter.js";
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.json());
 // Routes
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/distrubuting", distrubutingPointRouter);
 
 // Error Handler
 app.use(notFoundErr);

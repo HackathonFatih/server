@@ -72,7 +72,6 @@ export const deleteUser = AsyncHandler(async (req, res) => {
 // @route POST /users/create-accommodation-announcement
 export const createAccommodationAnnouncement = AsyncHandler(
   async (req, res) => {
-    console.log(req.user);
     const user = await User.findById(req.userAuth._id);
     if (!user) {
       res.status(404);
