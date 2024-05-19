@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const truckSchema = new mongoose.Schema(
-  ({
+  {
     to: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "DistributingPoint",
@@ -28,7 +28,7 @@ const truckSchema = new mongoose.Schema(
       type: String,
     },
   },
-  { timestamps: true })
+  { timestamps: true }
 );
 
 const Truck = mongoose.model("Truck", truckSchema);
