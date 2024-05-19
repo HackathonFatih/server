@@ -60,7 +60,24 @@ export const createVolunteerAnnouncement = AsyncHandler(async (req, res) => {
     data: distributionPoint,
   });
 });
+// @route GET /distrubuting/get-all-volunteer-announcement
+
+export const getAllVolunteerAnnouncement = AsyncHandler(async (req, res) => {
+  const distributionPoints = await DistributionPoint.find({});
+
+  const volunteerAnnouncements = distributionPoints.map((dp) => ({
+    distributionPointId: dp._id,
+    distributionPointName: dp.name,
+  }));
+
+  res.status(200).json({
+    success: true,
+    data: volunteerAnnouncements,
+  });
+});
+
 // @route GET /distrubuting/:distrubutingPointId/where-is-our-trucks
+
 export const whereIsOurTrucks = AsyncHandler(async (req, res) => {
   const user = await User.findById(req.userAuth._id);
   if (!user) {

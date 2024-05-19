@@ -6,6 +6,8 @@ import {
   updateUserProfile,
   createAccommodationAnnouncement,
   createInstructorOrPsychologistAnnouncement,
+  getAllAccommodationAnnouncement,
+  getAllInstructorOrPsychologistAnnouncement,
 } from "../controller/userController.js";
 
 import isAuthenticated from "../middlewares/isAuthenticated.js";
@@ -33,9 +35,17 @@ userRouter.post(
   isAuthenticated(User),
   createAccommodationAnnouncement
 );
+userRouter.get(
+  "/get-all-accommodation-announcement",
+  getAllAccommodationAnnouncement
+);
 userRouter.post(
   "/create-instructor-or-psychologist-announcement",
   isAuthenticated(User),
   createInstructorOrPsychologistAnnouncement
+);
+userRouter.get(
+  "/get-all-instructor-or-psychologist-announcement",
+  getAllInstructorOrPsychologistAnnouncement
 );
 export default userRouter;

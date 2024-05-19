@@ -95,6 +95,18 @@ export const createAccommodationAnnouncement = AsyncHandler(
     });
   }
 );
+// @route GET /users/get-all-accommodation-announcement
+export const getAllAccommodationAnnouncement = AsyncHandler(
+  async (req, res) => {
+    const accommodations = await Accommodation.find();
+    res.status(200).json({
+      length: accommodations.length,
+      success: true,
+      message: "All accommodations",
+      data: accommodations,
+    });
+  }
+);
 
 // @route POST /users/create-instructor-or-psychologist-announcement
 export const createInstructorOrPsychologistAnnouncement = AsyncHandler(
@@ -118,6 +130,19 @@ export const createInstructorOrPsychologistAnnouncement = AsyncHandler(
       success: true,
       message: `${type} announcement created`,
       data: announcement,
+    });
+  }
+);
+
+// @route GET /users/get-all-instructor-or-psychologist-announcement
+export const getAllInstructorOrPsychologistAnnouncement = AsyncHandler(
+  async (req, res) => {
+    const announcements = await InstructorOrPsychologist.find();
+    res.status(200).json({
+      length: announcements.length,
+      success: true,
+      message: "All announcements",
+      data: announcements,
     });
   }
 );

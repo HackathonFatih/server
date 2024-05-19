@@ -2,6 +2,7 @@ import express from "express";
 import {
   createDistributionPoint,
   createVolunteerAnnouncement,
+  getAllVolunteerAnnouncement,
   whereIsOurTrucks,
 } from "../controller/distrubutingPointController.js";
 import isAuthenticated from "../middlewares/isAuthenticated.js";
@@ -15,6 +16,11 @@ distrubutingPointRouter.post(
   isAuthenticated(User),
   roleRestriction("responsible"),
   createVolunteerAnnouncement
+);
+
+distrubutingPointRouter.get(
+  "/get-all-volunteer-announcement",
+  getAllVolunteerAnnouncement
 );
 
 distrubutingPointRouter.post(
