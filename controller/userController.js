@@ -77,15 +77,7 @@ export const createAccommodationAnnouncement = AsyncHandler(
       res.status(404);
       throw new Error("User not found");
     }
-    const {
-      definition,
-      personNumber,
-      duration,
-      city,
-      township,
-      district,
-      street,
-    } = req.body;
+    const { definition, personNumber, duration, city, township } = req.body;
     const accommodation = new Accommodation({
       by: user._id,
       definition,
@@ -93,8 +85,6 @@ export const createAccommodationAnnouncement = AsyncHandler(
       duration,
       city,
       township,
-      district,
-      street,
     });
 
     await accommodation.save();

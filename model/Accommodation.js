@@ -26,15 +26,6 @@ const accommodationSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide a township"],
   },
-  district: {
-    type: String,
-    required: [true, "Please provide a district"],
-  },
-
-  street: {
-    type: String,
-    required: [true, "Please provide a street"],
-  },
 });
 
 const Accommodation = mongoose.model("Accommodation", accommodationSchema);
