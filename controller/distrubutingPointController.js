@@ -1,5 +1,5 @@
 import AsyncHandler from "express-async-handler";
-import DistributionPoint from "../model/distrubutingPoint.js";
+import DistributionPoint from "../model/DistrubutingPoint.js";
 import User from "../model/User.js";
 import Truck from "../model/Truck.js";
 
